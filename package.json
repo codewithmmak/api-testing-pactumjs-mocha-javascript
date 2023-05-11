@@ -17,7 +17,7 @@
   "author": "Code with MMAK",
   "license": "ISC",
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0",
+    "@faker-js/faker": "^8.0.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "mocha": "^10.2.0",
