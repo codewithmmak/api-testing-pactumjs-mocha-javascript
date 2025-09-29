@@ -18,7 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
-    "cross-env": "^7.0.3",
+    "cross-env": "^10.0.0",
     "dotenv": "^16.3.1",
     "mocha": "^10.2.0",
     "mochawesome": "^7.1.3",
