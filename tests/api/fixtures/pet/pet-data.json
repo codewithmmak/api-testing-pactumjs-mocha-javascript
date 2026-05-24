@@ -1,0 +1,17 @@
+{
+  "name": "automation-pet",
+  "status": "available",
+  "category": {
+    "id": 1,
+    "name": "automation"
+  },
+  "photoUrls": [
+    "https://example.com/pet.jpg"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "api-test"
+    }
+  ]
+}

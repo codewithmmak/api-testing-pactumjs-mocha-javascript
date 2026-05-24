@@ -4,8 +4,16 @@
   "description": "API Testing using PactumJS Mocha and JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test-api/*.js --reporter spec --reporter mochawesome --timeout 5000",
-    "lt": "cross-env CONFIG_FILE=lt ./node_modules/.bin/mocha ./test-api/*.js"
+    "test": "npm run test:petstore",
+    "test:runner:petstore": "mocha \"tests/api/specs/pet/**/*.js\" --require ./tests/api/support/setup.js --reporter mocha-multi-reporters --reporter-options configFile=.mocha-reporters.json",
+    "test:petstore": "cross-env ENV=petstore npm run test:runner:petstore",
+    "test:petstore:auth": "cross-env ENV=petstore REQUIRE_API_KEY=true npm run test:runner:petstore",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "test:ci": "npm run lint && npm run test:petstore && npm run test:petstore:auth"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "keywords": [
     "PactumJS",
@@ -17,11 +25,13 @@
   "author": "Code with MMAK",
   "license": "ISC",
   "devDependencies": {
-    "@faker-js/faker": "^10.3.0",
+    "@faker-js/faker": "^10.4.0",
     "cross-env": "^10.1.0",
-    "dotenv": "^17.3.1",
-    "mocha": "^11.7.5",
+    "dotenv": "^17.4.2",
+    "eslint": "^8.57.1",
+    "mocha": "^11.7.6",
+    "mocha-multi-reporters": "^1.5.1",
     "mochawesome": "^7.1.4",
-    "pactum": "^3.9.0"
+    "pactum": "^3.9.1"
   }
 }

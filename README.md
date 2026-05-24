@@ -1,32 +1,87 @@
----
-# API Testing using PactumJS MochaJS and JavaScript
----
+# API Testing using PactumJS, Mocha, and JavaScript
 
-## Getting started
+This project contains API automation tests for the Swagger Petstore API using PactumJS with Mocha.
 
-### Pre-requisites
-* Download and install Node.js
-* Download and install any Text Editor like Visual Code/Sublime/Brackets
+## Framework highlights
 
-### Setup Visual Code
-* Install GitLens Extension from the Marketplace: `GitLens — Git supercharged by GitKraken`
-* Install vscode-icons from the Marketplace: `vscode-icons`
-* Go to Visual Code Preference > Setting and search `formatOnSave` and enable/ON it.
+- Shared test bootstrap in `tests/api/support/setup.js`
+- Environment-driven base URL
+- API key support via environment variables (`API_KEY`, `API_KEY_HEADER`)
+- Mochawesome HTML reporting
+- ESLint quality checks
+- GitHub Actions CI for pull requests and pushes
 
-### Setup Scripts 
-* Clone the repository into a folder
-* Go to Project root directory and install Dependency: `npm install`
-* All the dependencies from package.json would be installed in node_modules folder.
+## Project structure
 
-### How to Run Test
-* Go to Project root directory and run command: `npm test`
+- `tests/api/specs/pet/` - Petstore API test specs
+- `tests/api/fixtures/pet/` - request payloads and reusable JSON data
+- `tests/api/services/petService.js` - Petstore request builders
+- `tests/api/constants/` - shared status codes
+- `tests/api/support/` - shared test bootstrap
+- `.github/workflows/` - CI pipelines
 
-### How to view HTML report
-* Go to Project root directory: `./mochawesome-report/mochawesome.html`
+## Prerequisites
 
-### Sample Test Results
-![API Testing using PactumJS, MochaJS, and JavaScript Test Report](./assets/test-results-console.PNG?raw=true "API Testing using PactumJS, MochaJS, and JavaScript Test Report")
+- Node.js 20 or newer
+- npm
 
-![API Testing using PactumJS, MochaJS, and JavaScript Test Report](./assets/test-results.png?raw=true "API Testing using PactumJS, MochaJS, and JavaScript Test Report")
+## Setup
 
-![API Testing using PactumJS, MochaJS, and JavaScript Test Report Expanded View](./assets/test-results.png?raw=true "API Testing using PactumJS, MochaJS, and JavaScript Test Report Expanded View")
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Create local environment file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Optional: use the provided Petstore env file directly:
+
+   `config/env/.env.petstore`
+
+## Run commands
+
+- Run Petstore suite:
+
+  ```bash
+  npm test
+  ```
+
+- Run Petstore suite with explicit API key requirement:
+
+  ```bash
+  npm run test:petstore:auth
+  ```
+
+- Run lint:
+
+  ```bash
+  npm run lint
+  ```
+
+- Run CI-equivalent local check:
+
+  ```bash
+  npm run test:ci
+  ```
+
+## Reports
+
+After test execution, open:
+
+- `mochawesome-report/mochawesome.html`
+
+## Notes
+
+- Do not commit `.env` files.
+- Use `.env.example` as the source of required environment variables.
+
+## Sample Test Results
+
+![API Testing Console Report](./assets/test-results-console.PNG?raw=true "API Testing Console Report")
+
+![API Testing HTML Report](./assets/test-results.png?raw=true "API Testing HTML Report")
